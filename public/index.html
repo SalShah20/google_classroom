@@ -34,6 +34,20 @@
                 padding: 2px 6px;
                 border-radius: 3px;
             }
+            .credit {
+                position: fixed;
+                bottom: 12px;
+                right: 16px;
+                font-size: 11px;
+                color: #aaa;
+            }
+            .credit a {
+                color: #aaa;
+                text-decoration: none;
+            }
+            .credit a:hover {
+                color: #666;
+            }
         </style>
     </head>
     <body>
@@ -56,8 +70,8 @@
             // Redirect to Google OAuth
             document.querySelector('.btn').addEventListener('click', (e) => {
                 e.preventDefault();
-                const clientId = '17713166214-uvl4smr3rie3o5rejs3rluqmh8hahuiu.apps.googleusercontent.com';
-                const redirectUri = 'https://your-app.vercel.app/callback';
+                const clientId = '17713166214-0cjakuhg8d98nqvhrd1j2l65edrbg6al.apps.googleusercontent.com';
+                const redirectUri = 'https://google-classroom-three.vercel.app/callback';
                 const scope = [
                     'https://www.googleapis.com/auth/classroom.courses.readonly',
                     'https://www.googleapis.com/auth/classroom.rosters.readonly',
