@@ -21,8 +21,6 @@ export default async function handler(req, res) {
     const { tokens } = await oauth2Client.getToken(code);
 
     res.status(200).json({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       refreshToken: tokens.refresh_token,
     });
 
