@@ -13,6 +13,7 @@
     }
     nav {
       display: flex;
+      gap: 20px;
       justify-content: flex-end;
       margin-bottom: 10px;
     }
@@ -22,12 +23,9 @@
       font-size: 14px;
       font-weight: 500;
     }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    h1 {
-      margin-bottom: 8px;
-    }
+    nav a:hover { text-decoration: underline; }
+
+    h1 { margin-bottom: 8px; }
     .subtitle {
       color: #666;
       font-size: 16px;
@@ -39,33 +37,35 @@
       background: #f5f5f5;
       border-radius: 8px;
     }
-    .section h3 {
-      margin-top: 0;
-    }
+    .section h3 { margin-top: 0; }
+
+    /* Capability list */
     .capability {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      margin: 14px 0;
+      gap: 14px;
+      margin: 16px 0;
     }
-    .capability .icon {
-      font-size: 20px;
+    .cap-icon {
       flex-shrink: 0;
-      width: 28px;
-      text-align: center;
-    }
-    .capability p {
-      margin: 0;
-    }
-    .capability strong {
-      display: block;
-      margin-bottom: 2px;
-    }
-    .flow {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: #4285f4;
+      color: white;
       display: flex;
-      flex-direction: column;
-      gap: 0;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      margin-top: 2px;
     }
+    .capability div:last-child { flex: 1; }
+    .capability p { margin: 0; }
+    .capability strong { display: block; margin-bottom: 2px; }
+
+    /* Flow steps */
+    .flow { display: flex; flex-direction: column; }
     .flow-step {
       display: flex;
       align-items: flex-start;
@@ -95,27 +95,26 @@
       height: 28px;
       background: #c5d7f5;
     }
-    .flow-step p {
-      margin: 4px 0 16px;
-    }
+    .flow-step p { margin: 4px 0 16px; }
     code {
       background: #e8e8e8;
       padding: 2px 6px;
       border-radius: 3px;
       font-size: 13px;
     }
+
+    /* Example prompts */
     .example-box {
-      background: #282c34;
-      color: #abb2bf;
+      background: #1e1e2e;
+      color: #cdd6f4;
       padding: 16px 20px;
-      border-radius: 6px;
+      border-radius: 8px;
       margin: 16px 0;
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.8;
     }
-    .example-box .prompt {
-      color: #61afef;
-    }
+    .example-box .prompt { color: #89b4fa; }
+
     .cta {
       text-align: center;
       margin: 36px 0 20px;
@@ -131,9 +130,8 @@
       text-decoration: none;
       display: inline-block;
     }
-    .btn:hover {
-      background: #357ae8;
-    }
+    .btn:hover { background: #357ae8; }
+
     .footer {
       margin-top: 60px;
       padding-top: 20px;
@@ -142,18 +140,13 @@
       font-size: 13px;
       color: #888;
     }
-    .footer a {
-      color: #4285f4;
-      text-decoration: none;
-    }
-    .footer a:hover {
-      text-decoration: underline;
-    }
+    .footer a { color: #4285f4; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <nav>
-    <a href="/">Back to Setup</a>
+    <a href="/">Setup</a>
   </nav>
 
   <h1>How It Works</h1>
@@ -161,7 +154,7 @@
 
   <div class="section">
     <h3>What is MCP?</h3>
-    <p>The <strong>Model Context Protocol (MCP)</strong> is an open standard that lets AI assistants like Claude securely connect to external data sources and tools. Instead of copying and pasting information, MCP servers give Claude direct, read-only access to your data — so you can just ask questions in natural language.</p>
+    <p>The <strong>Model Context Protocol (MCP)</strong> is an open standard that lets AI assistants like Claude securely connect to external data sources and tools. Instead of copying and pasting information, MCP servers give Claude direct, read-only access to your data -- so you can just ask questions in natural language.</p>
   </div>
 
   <div class="section">
@@ -169,7 +162,7 @@
     <p>Once connected, Claude can access your Google Classroom data. Here's what you can ask it to do:</p>
 
     <div class="capability">
-      <div class="icon">📚</div>
+      <div class="cap-icon">1</div>
       <div>
         <strong>View Courses</strong>
         <p>List all your active courses, see course details, and check enrollment info.</p>
@@ -177,7 +170,7 @@
     </div>
 
     <div class="capability">
-      <div class="icon">👥</div>
+      <div class="cap-icon">2</div>
       <div>
         <strong>View Rosters</strong>
         <p>See the students and teachers in each of your courses.</p>
@@ -185,15 +178,15 @@
     </div>
 
     <div class="capability">
-      <div class="icon">📝</div>
+      <div class="cap-icon">3</div>
       <div>
-        <strong>View Coursework & Submissions</strong>
+        <strong>View Coursework and Submissions</strong>
         <p>List assignments, check due dates, and see student submissions and grades.</p>
       </div>
     </div>
 
     <div class="capability">
-      <div class="icon">📢</div>
+      <div class="cap-icon">4</div>
       <div>
         <strong>View Announcements</strong>
         <p>Read announcements posted to your courses.</p>
@@ -201,10 +194,18 @@
     </div>
 
     <div class="capability">
-      <div class="icon">📧</div>
+      <div class="cap-icon">5</div>
       <div>
-        <strong>View Student Profiles</strong>
-        <p>Access student email addresses and profile information.</p>
+        <strong>Calculate Grades</strong>
+        <p>See your grades across all courses and calculate overall percentages.</p>
+      </div>
+    </div>
+
+    <div class="capability">
+      <div class="cap-icon">6</div>
+      <div>
+        <strong>Track Missing and Upcoming Work</strong>
+        <p>Find assignments that are past due or coming up soon across all your classes.</p>
       </div>
     </div>
   </div>
@@ -248,7 +249,7 @@
         </div>
         <div>
           <strong>Start asking questions</strong>
-          <p>Claude can now pull your Classroom data on demand. Just ask in natural language!</p>
+          <p>Claude can now pull your Classroom data on demand. Just ask in natural language.</p>
         </div>
       </div>
     </div>
@@ -261,8 +262,9 @@
       <div><span class="prompt">"List all my Google Classroom courses"</span></div>
       <div><span class="prompt">"Show me the students in my Biology class"</span></div>
       <div><span class="prompt">"What assignments are due this week?"</span></div>
+      <div><span class="prompt">"What's my grade in History?"</span></div>
+      <div><span class="prompt">"Which assignments am I missing?"</span></div>
       <div><span class="prompt">"Summarize recent announcements across all my courses"</span></div>
-      <div><span class="prompt">"Which students haven't submitted the latest assignment?"</span></div>
     </div>
   </div>
 

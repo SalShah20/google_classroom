@@ -36,6 +36,7 @@
             }
             nav {
                 display: flex;
+                gap: 20px;
                 justify-content: flex-end;
                 margin-bottom: 10px;
             }
@@ -46,6 +47,26 @@
                 font-weight: 500;
             }
             nav a:hover {
+                text-decoration: underline;
+            }
+            .how-it-works-banner {
+                background: #e8f4fd;
+                border: 1px solid #b6d4fe;
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin-bottom: 24px;
+                font-size: 14px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .how-it-works-banner a {
+                color: #4285f4;
+                font-weight: 600;
+                text-decoration: none;
+                white-space: nowrap;
+            }
+            .how-it-works-banner a:hover {
                 text-decoration: underline;
             }
             .footer {
@@ -70,6 +91,10 @@
             <a href="/how-it-works">How It Works</a>
         </nav>
         <h1>Google Classroom MCP Setup</h1>
+        <div class="how-it-works-banner">
+            <span>New to MCP? Learn what this tool does and how it connects to Claude.</span>
+            <a href="/how-it-works">How It Works &rarr;</a>
+        </div>
         <div class="step">
             <h3>Step 1: Install the MCP Server</h3>
             <p>Run this command in your terminal:</p>
@@ -97,7 +122,7 @@
                 const scope = [
                     'https://www.googleapis.com/auth/classroom.courses.readonly',
                     'https://www.googleapis.com/auth/classroom.rosters.readonly',
-                    'https://www.googleapis.com/auth/classroom.coursework.students',
+                    'https://www.googleapis.com/auth/classroom.coursework.students.readonly',
                     'https://www.googleapis.com/auth/classroom.coursework.me',
                     'https://www.googleapis.com/auth/classroom.announcements.readonly',
                     'https://www.googleapis.com/auth/classroom.profile.emails'

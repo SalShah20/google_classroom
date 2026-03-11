@@ -4,43 +4,173 @@
   <title>Google Classroom MCP - Authorization Complete</title>
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       max-width: 700px;
       margin: 50px auto;
       padding: 20px;
+      color: #333;
+      line-height: 1.6;
     }
-    .success {
+    nav {
+      display: flex;
+      gap: 20px;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+    nav a {
+      color: #4285f4;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    .success-banner {
       background: #d4edda;
       color: #155724;
-      padding: 15px;
+      padding: 16px 20px;
       border-radius: 8px;
       margin: 20px 0;
+      border: 1px solid #c3e6cb;
     }
-    .config-box {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 8px;
-      border: 1px solid #dee2e6;
-      margin: 20px 0;
+    .success-banner h2 { margin: 0 0 4px; }
+    .success-banner p { margin: 0; }
+
+    /* Numbered steps */
+    .steps { counter-reset: step-counter; margin: 28px 0 0; }
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+      align-items: flex-start;
     }
-    pre {
-      background: #282c34;
-      color: #abb2bf;
-      padding: 15px;
-      border-radius: 4px;
-      overflow-x: auto;
-    }
-    .copy-btn {
-      background: #28a745;
+    .step-number {
+      counter-increment: step-counter;
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #4285f4;
       color: white;
-      padding: 8px 16px;
-      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      margin-top: 2px;
+    }
+    .step-body { flex: 1; min-width: 0; }
+    .step-body h3 { margin: 0 0 6px; font-size: 17px; }
+    .step-body p { margin: 0 0 10px; }
+
+    /* Copyable path row */
+    .path-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f0f0f0;
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+      font-size: 13px;
+      word-break: break-all;
+    }
+    .path-row code {
+      flex: 1;
+      background: none;
+      padding: 0;
+      font-size: inherit;
+    }
+    .copy-icon-btn {
+      flex-shrink: 0;
+      background: none;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      padding: 5px 8px;
+      cursor: pointer;
+      font-size: 12px;
+      color: #555;
+      white-space: nowrap;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .copy-icon-btn:hover { background: #e0e0e0; border-color: #999; }
+    .copy-icon-btn.copied {
+      background: #d4edda;
+      border-color: #a3d9a5;
+      color: #155724;
+    }
+
+    /* Warning callout */
+    .warning-box {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-left: 4px solid #ffc107;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    .warning-box strong { display: block; margin-bottom: 4px; }
+
+    /* Info callout — "don't see the file?" */
+    .info-box {
+      background: #e8f4fd;
+      border: 1px solid #b6d4fe;
+      border-left: 4px solid #4285f4;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    .info-box strong { display: block; margin-bottom: 4px; }
+
+    /* Config code block */
+    pre {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      padding: 18px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.5;
+      position: relative;
+    }
+    .config-wrapper { position: relative; }
+    .config-copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #cdd6f4;
+      padding: 6px 14px;
       border-radius: 4px;
       cursor: pointer;
-      margin-top: 10px;
+      font-size: 12px;
+      transition: background 0.15s;
     }
-    .copy-btn:hover { background: #218838; }
-    #loading { text-align: center; padding: 40px; }
+    .config-copy-btn:hover { background: rgba(255,255,255,0.2); }
+    .config-copy-btn.copied { background: #28a745; color: white; border-color: #28a745; }
+
+    /* Merge example */
+    .merge-example {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 18px;
+      margin: 14px 0;
+    }
+    .merge-example p { margin: 0 0 10px; font-size: 14px; }
+    .merge-example pre {
+      font-size: 12px;
+      margin: 0;
+    }
+
+    #loading { text-align: center; padding: 60px 20px; }
+    #loading h2 { color: #555; font-weight: 500; }
+
     .footer {
       margin-top: 60px;
       padding-top: 20px;
@@ -49,44 +179,86 @@
       font-size: 13px;
       color: #888;
     }
-    .footer a {
-      color: #4285f4;
-      text-decoration: none;
-    }
-    .footer a:hover {
-      text-decoration: underline;
-    }
+    .footer a { color: #4285f4; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="/">Setup</a>
+    <a href="/how-it-works">How It Works</a>
+  </nav>
+
   <div id="loading">
     <h2>Getting your credentials...</h2>
   </div>
 
   <div id="success" style="display:none;">
-    <div class="success">
-      <h2>Authorization Successful!</h2>
-      <p>Your Google Classroom account has been connected.</p>
+
+    <div class="success-banner">
+      <h2>Authorization Successful</h2>
+      <p>Your Google Classroom account has been connected. Now add the configuration to Claude Desktop.</p>
     </div>
 
-    <div class="config-box">
-      <h3>Configuration for Claude Desktop</h3>
-      <p>Copy this configuration and add it to your Claude Desktop config file:</p>
-      <p><strong>Windows:</strong> <code>%APPDATA%\Claude\claude_desktop_config.json</code></p>
-      <p><strong>macOS:</strong> <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></p>
-      
-      <pre id="config"></pre>
-      <button class="copy-btn" onclick="copyConfig()">Copy Configuration</button>
+    <!-- STEP 1 — Open the config file -->
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-body">
+          <h3>Open your Claude Desktop config file</h3>
+          <p>Open this file in any text editor (Notepad, TextEdit, VS Code, etc.):</p>
+          <div class="path-row">
+            <code id="config-path"></code>
+            <button class="copy-icon-btn" onclick="copyPath(this)">Copy</button>
+          </div>
+
+          <div class="info-box" id="file-not-found-note"></div>
+        </div>
+      </div>
+
+      <!-- STEP 2 — Add the config snippet -->
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-body">
+          <h3>Add this snippet to your config file</h3>
+
+          <div class="warning-box">
+            <strong>Do not replace what is already there.</strong>
+            If your config file already has content, you need to merge this in — add the <code>"google-classroom"</code> block inside the existing <code>"mcpServers"</code> object. See the example below.
+          </div>
+
+          <div class="config-wrapper">
+            <pre id="config"></pre>
+            <button class="config-copy-btn" onclick="copyConfig(this)">Copy</button>
+          </div>
+
+          <div class="merge-example" id="merge-help">
+            <p><strong>Already have other MCP servers configured?</strong> Your file might look like this — just add a comma and paste the new block:</p>
+            <pre id="merge-preview"></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 — Restart -->
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-body">
+          <h3>Restart Claude Desktop</h3>
+          <p>Fully quit Claude Desktop and reopen it. The new MCP server will load automatically on startup.</p>
+        </div>
+      </div>
+
+      <!-- STEP 4 — Try it -->
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-body">
+          <h3>Try it out</h3>
+          <p>Open a new conversation in Claude Desktop and try asking:</p>
+          <p style="background:#f0f0f0; padding:10px 14px; border-radius:6px; font-style:italic;">"List my Google Classroom courses"</p>
+        </div>
+      </div>
     </div>
 
-    <div class="config-box">
-      <h3>Next Steps</h3>
-      <ol>
-        <li>Paste the configuration into your Claude Desktop config file</li>
-        <li>Restart Claude Desktop</li>
-        <li>Ask Claude: "List my Google Classroom courses"</li>
-      </ol>
-    </div>
   </div>
 
   <div class="footer">
@@ -94,17 +266,60 @@
   </div>
 
   <script>
+    // --- OS Detection ---
+    function detectOS() {
+      const ua = navigator.userAgent.toLowerCase();
+      if (ua.includes('win')) return 'windows';
+      if (ua.includes('mac')) return 'mac';
+      return 'linux';
+    }
+
+    const OS_CONFIG = {
+      windows: {
+        path: '%APPDATA%\\Claude\\claude_desktop_config.json',
+        tip: 'Press <strong>Win + R</strong>, paste <code>%APPDATA%\\Claude</code>, and press Enter to open the folder.',
+        noFile: 'Don\'t see the file? Open Claude Desktop at least once, then close it — the folder and file will be created automatically. If the folder exists but the file doesn\'t, create a new file called <code>claude_desktop_config.json</code> and paste <code>{}</code> inside, then add the snippet below.'
+      },
+      mac: {
+        path: '~/Library/Application Support/Claude/claude_desktop_config.json',
+        tip: 'In Finder, press <strong>Cmd + Shift + G</strong> and paste <code>~/Library/Application Support/Claude</code> to jump to the folder.',
+        noFile: 'Don\'t see the file? Open Claude Desktop at least once, then quit it — the folder and file will be created automatically. If the folder exists but the file doesn\'t, create a new file called <code>claude_desktop_config.json</code> and paste <code>{}</code> inside, then add the snippet below.'
+      },
+      linux: {
+        path: '~/.config/Claude/claude_desktop_config.json',
+        tip: 'Open a terminal and run <code>mkdir -p ~/.config/Claude</code> if the directory doesn\'t exist.',
+        noFile: 'Don\'t see the file? Open Claude Desktop at least once, then close it — the folder and file will be created automatically. If the folder exists but the file doesn\'t, create a new file called <code>claude_desktop_config.json</code> and paste <code>{}</code> inside, then add the snippet below.'
+      }
+    };
+
+    // --- Copy helpers ---
+    function copyPath(btn) {
+      const pathText = document.getElementById('config-path').textContent;
+      navigator.clipboard.writeText(pathText);
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    }
+
+    function copyConfig(btn) {
+      const config = document.getElementById('config').textContent;
+      navigator.clipboard.writeText(config);
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    }
+
+    // --- Main ---
     async function handleCallback() {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
-      
+
       if (!code) {
-        document.getElementById('loading').innerHTML = '<h2>Authorization failed</h2><p>No authorization code received.</p>';
+        document.getElementById('loading').innerHTML = '<h2>Authorization failed</h2><p>No authorization code received. <a href="/">Go back and try again.</a></p>';
         return;
       }
 
       try {
-        // Exchange code for tokens
         const response = await fetch('/api/exchange-token', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -112,15 +327,23 @@
         });
 
         const data = await response.json();
-        
+
         if (data.error) {
           throw new Error(data.error);
         }
 
-        // Show success and config
+        // Hide loading, show content
         document.getElementById('loading').style.display = 'none';
         document.getElementById('success').style.display = 'block';
-        
+
+        // OS-specific path
+        const os = detectOS();
+        const osInfo = OS_CONFIG[os];
+        document.getElementById('config-path').textContent = osInfo.path;
+        document.getElementById('file-not-found-note').innerHTML =
+          '<strong>Don\'t see this file?</strong> ' + osInfo.noFile + '<br><br>' + osInfo.tip;
+
+        // Config snippet
         const config = {
           "mcpServers": {
             "google-classroom": {
@@ -132,26 +355,34 @@
             }
           }
         };
-        
+
         document.getElementById('config').textContent = JSON.stringify(config, null, 2);
-        
+
+        // Merge example
+        const mergeExample = {
+          "mcpServers": {
+            "some-other-server": {
+              "command": "npx",
+              "args": ["-y", "some-other-mcp"]
+            },
+            "google-classroom": {
+              "command": "npx",
+              "args": ["-y", "@salshah20/google-classroom-mcp"],
+              "env": {
+                "GOOGLE_REFRESH_TOKEN": data.refreshToken
+              }
+            }
+          }
+        };
+
+        document.getElementById('merge-preview').textContent = JSON.stringify(mergeExample, null, 2);
+
       } catch (error) {
-        document.getElementById('loading').innerHTML = `<h2>Error</h2><p>${error.message}</p>`;
+        document.getElementById('loading').innerHTML =
+          '<h2>Something went wrong</h2><p>' + error.message + '</p><p><a href="/">Go back and try again.</a></p>';
       }
     }
 
-    function copyConfig() {
-      const config = document.getElementById('config').textContent;
-      navigator.clipboard.writeText(config);
-      
-      const btn = document.querySelector('.copy-btn');
-      btn.textContent = 'Copied!';
-      setTimeout(() => {
-        btn.textContent = 'Copy Configuration';
-      }, 2000);
-    }
-
-    // Run on page load
     handleCallback();
   </script>
 </body>
