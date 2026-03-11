@@ -232,8 +232,11 @@
           </div>
 
           <div class="merge-example" id="merge-help">
-            <p><strong>Already have other MCP servers configured?</strong> Your file might look like this — just add a comma and paste the new block:</p>
-            <pre id="merge-preview"></pre>
+            <p><strong>Already have other MCP servers configured?</strong> Here is what your file might look like before and after adding Google Classroom:</p>
+            <p style="font-size:13px; color:#555; margin-bottom:4px;">Before:</p>
+            <pre id="merge-before"></pre>
+            <p style="font-size:13px; color:#555; margin-bottom:4px; margin-top:14px;">After:</p>
+            <pre id="merge-after"></pre>
           </div>
         </div>
       </div>
@@ -262,6 +265,7 @@
 
   <div class="footer">
     Built by <a href="https://salonishah.net" target="_blank">Saloni Shah</a>
+    <br><a href="/privacy">Privacy Policy</a> &middot; <a href="/terms">Terms of Service</a>
   </div>
 
   <script>
@@ -357,8 +361,17 @@
 
         document.getElementById('config').textContent = JSON.stringify(config, null, 2);
 
-        // Merge example
-        const mergeExample = {
+        // Before / after merge example
+        const mergeBefore = {
+          "mcpServers": {
+            "some-other-server": {
+              "command": "npx",
+              "args": ["-y", "some-other-mcp"]
+            }
+          }
+        };
+
+        const mergeAfter = {
           "mcpServers": {
             "some-other-server": {
               "command": "npx",
@@ -374,7 +387,8 @@
           }
         };
 
-        document.getElementById('merge-preview').textContent = JSON.stringify(mergeExample, null, 2);
+        document.getElementById('merge-before').textContent = JSON.stringify(mergeBefore, null, 2);
+        document.getElementById('merge-after').textContent = JSON.stringify(mergeAfter, null, 2);
 
       } catch (error) {
         document.getElementById('loading').innerHTML =

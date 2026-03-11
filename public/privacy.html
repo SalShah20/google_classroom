@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Privacy Policy - Google Classroom MCP</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 20px;
+      color: #333;
+      line-height: 1.7;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+    nav a {
+      color: #4285f4;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    nav a:hover { text-decoration: underline; }
+    h1 { margin-bottom: 4px; }
+    .last-updated {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+    h2 {
+      font-size: 18px;
+      margin-top: 32px;
+      margin-bottom: 8px;
+    }
+    ul { padding-left: 24px; }
+    li { margin-bottom: 6px; }
+    .footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+      text-align: center;
+      font-size: 13px;
+      color: #888;
+    }
+    .footer a { color: #4285f4; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/">Setup</a>
+    <a href="/how-it-works">How It Works</a>
+  </nav>
+
+  <h1>Privacy Policy</h1>
+  <p class="last-updated">Last updated: March 10, 2026</p>
+
+  <p>This privacy policy describes how the Google Classroom MCP application ("the Service") collects, uses, and protects your information.</p>
+
+  <h2>What Data We Access</h2>
+  <p>When you authorize the Service, it requests read-only access to the following Google Classroom data through your Google account:</p>
+  <ul>
+    <li>Course information (names, descriptions, states)</li>
+    <li>Class rosters (student and teacher lists)</li>
+    <li>Coursework and assignments (titles, descriptions, due dates, points)</li>
+    <li>Student submissions and grades</li>
+    <li>Course announcements</li>
+    <li>User profile information and email addresses</li>
+  </ul>
+  <p>All access is <strong>read-only</strong>. The Service cannot create, modify, or delete any data in your Google Classroom account.</p>
+
+  <h2>How Your Data Is Handled</h2>
+  <ul>
+    <li><strong>OAuth tokens:</strong> When you authorize the Service, a refresh token is generated. This token is displayed to you in the browser so you can copy it into your local Claude Desktop configuration. The token is exchanged server-side during the authorization flow but is <strong>not stored on our servers</strong> after the page is delivered to your browser.</li>
+    <li><strong>Local processing:</strong> The MCP server runs locally on your computer. Your Google Classroom data is fetched directly from Google's APIs to your machine. It is not routed through or stored on any third-party server.</li>
+    <li><strong>No analytics or tracking:</strong> The Service does not use cookies, analytics services, or any form of user tracking.</li>
+    <li><strong>No data sharing:</strong> Your data is never shared with, sold to, or disclosed to any third parties.</li>
+  </ul>
+
+  <h2>Data Storage</h2>
+  <p>The Service does not maintain a database or store any user data on its servers. The only persistent data is:</p>
+  <ul>
+    <li>Your refresh token, stored locally in your <code>claude_desktop_config.json</code> file on your own computer</li>
+  </ul>
+
+  <h2>Data Retention</h2>
+  <p>Since no user data is stored on our servers, there is nothing to retain. To remove your local data, delete the Google Classroom entry from your <code>claude_desktop_config.json</code> file. To revoke the Service's access to your Google account entirely, visit your <a href="https://myaccount.google.com/permissions" target="_blank">Google Account permissions page</a> and remove access for the application.</p>
+
+  <h2>Security</h2>
+  <p>The authorization flow uses Google's OAuth 2.0 protocol over HTTPS. The refresh token is transmitted securely and is only displayed in your browser for you to copy. The MCP server communicates with Google's APIs using authenticated, encrypted connections.</p>
+
+  <h2>Children's Privacy</h2>
+  <p>The Service does not knowingly collect personal information from children under 13. If you are using a Google Workspace for Education account, your use of the Service is subject to your institution's policies.</p>
+
+  <h2>Changes to This Policy</h2>
+  <p>We may update this privacy policy from time to time. Any changes will be reflected on this page with an updated date.</p>
+
+  <h2>Contact</h2>
+  <p>If you have questions about this privacy policy, please reach out through <a href="https://salonishah.net" target="_blank">salonishah.net</a>.</p>
+
+  <div class="footer">
+    Built by <a href="https://salonishah.net" target="_blank">Saloni Shah</a>
+  </div>
+</body>
+</html>

@@ -1,6 +1,8 @@
 {
   "rewrites": [
     { "source": "/callback", "destination": "/callback.html" },
-    { "source": "/how-it-works", "destination": "/how-it-works.html" }
+    { "source": "/how-it-works", "destination": "/how-it-works.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" }
   ]
 }
