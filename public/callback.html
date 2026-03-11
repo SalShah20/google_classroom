@@ -41,18 +41,21 @@
     }
     .copy-btn:hover { background: #218838; }
     #loading { text-align: center; padding: 40px; }
-    .credit {
-      position: fixed;
-      bottom: 12px;
-      right: 16px;
-      font-size: 11px;
-      color: #aaa;
+    .footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+      text-align: center;
+      font-size: 13px;
+      color: #888;
     }
-    .credit a {
-      color: #aaa;
+    .footer a {
+      color: #4285f4;
       text-decoration: none;
     }
-    .credit a:hover { color: #666; }
+    .footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -84,6 +87,10 @@
         <li>Ask Claude: "List my Google Classroom courses"</li>
       </ol>
     </div>
+  </div>
+
+  <div class="footer">
+    Built by <a href="https://salonishah.net" target="_blank">Saloni Shah</a>
   </div>
 
   <script>
