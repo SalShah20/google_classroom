@@ -25,6 +25,15 @@
     }
     nav a:hover { text-decoration: underline; }
 
+    .logo-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 4px;
+    }
+    .logo-header img { flex-shrink: 0; }
+    .logo-header h1 { margin: 0; font-size: 22px; }
+
     .success-banner {
       background: #d4edda;
       color: #155724;
@@ -187,6 +196,11 @@
   <nav>
     <a href="/how-it-works">How It Works</a>
   </nav>
+
+  <div class="logo-header">
+    <img src="/classroom-mcp-logo.svg" alt="Classroom MCP Logo" width="48" height="48">
+    <h1>Google Classroom MCP</h1>
+  </div>
 
   <div id="loading">
     <h2>Getting your credentials...</h2>
