@@ -55,45 +55,47 @@
     <a href="/how-it-works">How It Works</a>
   </nav>
 
-  <h1>Privacy Policy</h1>
+  <div class="logo-header">
+    <img src="/classroom-mcp-logo.svg" alt="Classroom MCP Logo" width="48" height="48">
+    <h1>Privacy Policy</h1>
+  </div>
   <p class="last-updated">Last updated: March 10, 2026</p>
 
-  <p>This privacy policy describes how the Google Classroom MCP application ("the Service") collects, uses, and protects your information.</p>
+  <p>This privacy policy describes how the Google Classroom MCP application collects, uses, and protects your information.</p>
 
   <h2>What Data We Access</h2>
-  <p>When you authorize the Service, it requests read-only access to the following Google Classroom data through your Google account:</p>
+  <p>When you authorize the service, it requests read-only access to the following Google Classroom data through your Google account:</p>
   <ul>
     <li>Course information (names, descriptions, states)</li>
-    <li>Class rosters (student and teacher lists)</li>
     <li>Coursework and assignments (titles, descriptions, due dates, points)</li>
     <li>Student submissions and grades</li>
     <li>Course announcements</li>
     <li>User profile information and email addresses</li>
   </ul>
-  <p>All access is <strong>read-only</strong>. The Service cannot create, modify, or delete any data in your Google Classroom account.</p>
+  <p>All access is <strong>read-only</strong>. The service cannot create, modify, or delete any data in your Google Classroom account.</p>
 
   <h2>How Your Data Is Handled</h2>
   <ul>
-    <li><strong>OAuth tokens:</strong> When you authorize the Service, a refresh token is generated. This token is displayed to you in the browser so you can copy it into your local Claude Desktop configuration. The token is exchanged server-side during the authorization flow but is <strong>not stored on our servers</strong> after the page is delivered to your browser.</li>
+    <li><strong>OAuth tokens:</strong> When you authorize the service, a refresh token is generated. This token is displayed to you in the browser so you can copy it into your local Claude Desktop configuration. The token is exchanged server-side during the authorization flow but is <strong>not stored on our servers</strong> after the page is delivered to your browser.</li>
     <li><strong>Local processing:</strong> The MCP server runs locally on your computer. Your Google Classroom data is fetched directly from Google's APIs to your machine. It is not routed through or stored on any third-party server.</li>
-    <li><strong>No analytics or tracking:</strong> The Service does not use cookies, analytics services, or any form of user tracking.</li>
+    <li><strong>No analytics or tracking:</strong> The service does not use cookies, analytics services, or any form of user tracking.</li>
     <li><strong>No data sharing:</strong> Your data is never shared with, sold to, or disclosed to any third parties.</li>
   </ul>
 
   <h2>Data Storage</h2>
-  <p>The Service does not maintain a database or store any user data on its servers. The only persistent data is:</p>
+  <p>The service does not maintain a database or store any user data on its servers. The only persistent data is:</p>
   <ul>
     <li>Your refresh token, stored locally in your <code>claude_desktop_config.json</code> file on your own computer</li>
   </ul>
 
   <h2>Data Retention</h2>
-  <p>Since no user data is stored on our servers, there is nothing to retain. To remove your local data, delete the Google Classroom entry from your <code>claude_desktop_config.json</code> file. To revoke the Service's access to your Google account entirely, visit your <a href="https://myaccount.google.com/permissions" target="_blank">Google Account permissions page</a> and remove access for the application.</p>
+  <p>Since no user data is stored on our servers, there is nothing to retain. To remove your local data, delete the Google Classroom entry from your <code>claude_desktop_config.json</code> file. To revoke the service's access to your Google account entirely, visit your <a href="https://myaccount.google.com/permissions" target="_blank">Google Account permissions page</a> and remove access for the application.</p>
 
   <h2>Security</h2>
   <p>The authorization flow uses Google's OAuth 2.0 protocol over HTTPS. The refresh token is transmitted securely and is only displayed in your browser for you to copy. The MCP server communicates with Google's APIs using authenticated, encrypted connections.</p>
 
   <h2>Children's Privacy</h2>
-  <p>The Service does not knowingly collect personal information from children under 13. If you are using a Google Workspace for Education account, your use of the Service is subject to your institution's policies.</p>
+  <p>The service does not knowingly collect personal information from children under 13. If you are using a Google Workspace for Education account, your use of the service is subject to your institution's policies.</p>
 
   <h2>Changes to This Policy</h2>
   <p>We may update this privacy policy from time to time. Any changes will be reflected on this page with an updated date.</p>
